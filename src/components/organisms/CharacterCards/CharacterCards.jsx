@@ -2,40 +2,24 @@ import React, { Component } from "react";
 import { Card, Avatar, List } from "antd";
 
 export default class CharacterCards extends Component {
-  state = {};
-  componentDidMount = () => {
-    console.log("function?", this.props.getAllCharacters);
+  state = {
+    avatar: "",
+    name: "",
+    birthday: null,
+    status: "",
+    category: ""
   };
+  componentDidMount() {
+    this.props.getAllCharacters();
+  }
 
   render() {
-    console.log(this.props.characterCards);
-    const data = [
-      {
-        title: "Title 1",
-        nick: "Mish",
-        birthday: "14"
-      },
-      {
-        title: "Title 2",
-        nick: "Mish"
-      },
-      {
-        title: "Title 3",
-        nick: "Mish"
-      },
-      {
-        title: "Title 4",
-        nick: "Mish"
-      },
-      {
-        title: "Title 5",
-        nick: "Mish"
-      },
-      {
-        title: "Title 6",
-        nick: "Mish"
-      }
-    ];
+    console.log("this.props.characterCards", this.props.characterCards);
+    const url =
+      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
+
+    const data = this.props.characterCards;
+    console.log("data", data);
     return (
       <List
         grid={{
@@ -51,22 +35,22 @@ export default class CharacterCards extends Component {
         renderItem={item => (
           <List.Item>
             <Card
-              style={{ width: 200 }}
+              style={{ width: 200, height: 450 }}
               cover={
                 <Avatar
                   size={164}
                   icon="user"
-                  src="#"
+                  src={item.avatar}
                   style={{ margin: "auto" }}
                   onClick={this.changeUser}
                 />
               }
             >
-              <p>name: {item.title}</p>
-              <p>nick: {item.nick}</p>
+              <p>name: {item.name}</p>
+              <p>nick: {item.nickname}</p>
               <p>birthday: {item.birthday}</p>
-              <p>status:</p>
-              <p>category:</p>
+              <p>status: {item.status}</p>
+              <p>category: {item.category}</p>
             </Card>
           </List.Item>
         )}

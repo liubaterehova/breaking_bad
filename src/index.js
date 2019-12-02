@@ -47,6 +47,7 @@ const configure = async () => {
         <MainPage />
       </Template>
     </Provider>,
+
     rootElement
   );
 
