@@ -1,6 +1,6 @@
 import { handleActions, createActions } from "redux-actions";
 
-import initialState, * as handlers from "./handlers.jsx";
+import initialState, * as handlers from "./handlers.js";
 
 export const actions = createActions({
     GET_ALL_CHARACTERS: undefined,
@@ -17,4 +17,4 @@ const customReducer = handleActions(
     initialState
 );
 
-// export default customReducer;
+export default customReducer;

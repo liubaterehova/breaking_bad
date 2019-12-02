@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { Card, Icon, Avatar, List } from "antd";
-
-const { Meta } = Card;
+import { Card, Avatar, List } from "antd";
 
 export default class CharacterCards extends Component {
+  state = {};
+  componentDidMount = () => {
+    console.log("function?", this.props.getAllCharacters);
+  };
+
   render() {
+    console.log(this.props.characterCards);
     const data = [
       {
         title: "Title 1",
