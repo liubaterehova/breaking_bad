@@ -10,9 +10,9 @@ export default class Filter extends Component {
     return (
       <div>
         <FilterStatus dataSource={dataSource} />
-        <FilterCategory />
-        <FilterFromAge />
-        <FilterToAge />
+        <FilterCategory dataSource={dataSource} />
+        <FilterFromAge dataSource={dataSource} />
+        <FilterToAge dataSource={dataSource} />
       </div>
     );
   }

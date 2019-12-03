@@ -20,9 +20,7 @@ function* getAllCharactersSaga({ payload }) {
     try {
         const custom = makeApi().custom;
         let response = yield call([custom, custom.getAllCharacters]);
-        console.log('responseinSaga', response);
         if (response.data) {
-            console.log('response.data', response.data);
             // payload - это value , которое мы ввели
             //response.data -это ответ от сервера
             const newArr = makeCharacterCard(response.data);

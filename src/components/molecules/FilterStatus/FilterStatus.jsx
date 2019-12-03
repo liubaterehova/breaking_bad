@@ -5,6 +5,7 @@ import "antd/dist/antd.css";
 export default class FilterStatus extends Component {
   render() {
     const { characterCards } = this.props.dataSource;
+
     let cards = new Map();
 
     for (let card of characterCards) {
@@ -17,13 +18,21 @@ export default class FilterStatus extends Component {
     let keyfor = 0;
 
     const onClick = ({ key }) => {
-      console.log("searchFor", arrForStatus[key]);
-      console.log("searchFor", arrForStatus[key][1]);
-      this.props.changeCharacterCards(arrForStatus[key][1]);
+      console.log("key", key);
+      if (key === "10") {
+        return this.props.dataSource.changeFilterStateStatus({
+          key: key,
+          allCategories: ""
+        });
+      } else
+        return this.props.dataSource.changeFilterStateStatus({
+          key: arrForStatus[key][0]
+        });
     };
 
     const menu = (
       <Menu onClick={onClick}>
+        <Menu.Item key={10}>All</Menu.Item>
         {arrForStatus.map(arr => {
           return <Menu.Item key={keyfor++}>{arr[0]}</Menu.Item>;
         })}

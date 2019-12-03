@@ -1,14 +1,39 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Icon, Button } from "antd";
+import { Menu, Dropdown, Icon } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterCategory extends Component {
   render() {
+    const { characterCards } = this.props.dataSource;
+    let cards = new Map();
+    for (let card of characterCards) {
+      if (!cards.has(card.category)) {
+        cards.set(card.category, [card]);
+      } else cards.get(card.category).push(card);
+    }
+
+    const arrForCategory = Array.from(cards);
+    console.log("arrForCategory", arrForCategory);
+    let keyfor = 0;
+
+    const onClick = ({ key }) => {
+      console.log("key", key);
+      if (key === "10") {
+        return this.props.dataSource.changeFilterCategoryStatus({
+          key: key,
+          allCategories: ""
+        });
+      }
+      return this.props.dataSource.changeFilterCategoryStatus({
+        key: arrForCategory[key][0]
+      });
+    };
     const menu = (
-      <Menu onClick={() => console.log("click")}>
-        <Menu.Item key="1">All</Menu.Item>
-        <Menu.Item key="2">BREAKING BAD</Menu.Item>
-        <Menu.Item key="3">BETTER CALL SAUL</Menu.Item>
+      <Menu onClick={onClick}>
+        <Menu.Item key={10}>All</Menu.Item>
+        {arrForCategory.map(arr => (
+          <Menu.Item key={keyfor++}>{arr[0]}</Menu.Item>
+        ))}
       </Menu>
     );
 
