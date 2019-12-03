@@ -4,12 +4,23 @@ import "antd/dist/antd.css";
 
 export default class FilterStatus extends Component {
   render() {
+    const { characterCards } = this.props;
+    let cards = new Map();
+
+    for (let card of characterCards) {
+      if (!cards.has(card.status)) {
+        cards.set(card.status, [card]);
+      } else cards.get(card.status).push(card);
+    }
+    console.log("cards", cards);
+    const arrForStatus = Array.from(cards);
+    console.log("arrForStatus", arrForStatus);
+    let keyfor = 0;
     const menu = (
       <Menu onClick={() => console.log("click")}>
-        <Menu.Item key="1">All</Menu.Item>
-        <Menu.Item key="2">DEAD</Menu.Item>
-        <Menu.Item key="3">UNDEFINED</Menu.Item>
-        <Menu.Item key="3">ALIVE</Menu.Item>
+        {arrForStatus.map(arr => {
+          return <Menu.Item key={keyfor++}>{arr[0]}</Menu.Item>;
+        })}
       </Menu>
     );
 

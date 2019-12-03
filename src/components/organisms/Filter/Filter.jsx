@@ -6,9 +6,10 @@ import FilterToAge from "../../molecules/FilterToAge";
 
 export default class Filter extends Component {
   render() {
+    const { dataSource } = this.props;
     return (
       <div>
-        <FilterStatus />
+        <FilterStatus characterCards={dataSource.characterCards} />
         <FilterCategory />
         <FilterFromAge />
         <FilterToAge />

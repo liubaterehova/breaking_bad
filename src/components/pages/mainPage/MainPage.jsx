@@ -10,7 +10,7 @@ export default class MainPage extends Component {
     console.log("this.propsinMainPage", this.props);
     return (
       <div>
-        <Filter />
+        <Filter dataSource={this.props} />
         <SortButton />
         <ResetButton />
         <CharacterCards dataSource={this.props} />
