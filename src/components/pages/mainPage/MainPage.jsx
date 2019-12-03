@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import Filter from "../../organisms/Filter";
 import SortButton from "../../atoms/SortButton";
 import ResetButton from "../../atoms/ResetButton";
-import ConnectCharacterCards from "../../../containers/ConnectCharacterCards";
+import CharacterCards from "../../organisms/CharacterCards";
+// import ConnectCharacterCards from "../../../containers/ConnectCharacterCards";
 
 export default class MainPage extends Component {
   render() {
+    console.log("this.propsinMainPage", this.props);
     return (
       <div>
         <Filter />
         <SortButton />
         <ResetButton />
-        <ConnectCharacterCards />
+        <CharacterCards dataSource={this.props} />
       </div>
     );
   }

@@ -10,7 +10,7 @@ import configureStore from "./store";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import MainPage from "../src/components/pages/mainPage";
+import MainPage from "../src/containers/ConnectMainPage";
 import Template from "../src/components/template";
 
 // const state = {
@@ -45,7 +45,7 @@ const configure = async () => {
     <Provider store={store}>
       <Template history={history}>
         <MainPage />
-      </Template>
+      </Template>{" "}
     </Provider>,
 
     rootElement

@@ -10,16 +10,15 @@ export default class CharacterCards extends Component {
     category: ""
   };
   componentDidMount() {
-    this.props.getAllCharacters();
+    console.log("this.propsInCharacterCard", this.props.dataSource);
+    this.props.dataSource.getAllCharacters();
   }
 
   render() {
-    console.log("this.props.characterCards", this.props.characterCards);
-    const url =
-      "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
+    const { dataSource } = this.props;
 
-    const data = this.props.characterCards;
-    console.log("data", data);
+    const data = dataSource.characterCards;
+
     return (
       <List
         grid={{

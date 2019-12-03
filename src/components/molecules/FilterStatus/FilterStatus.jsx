@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Icon, Button } from "antd";
+import { Menu, Dropdown, Icon } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterStatus extends Component {
