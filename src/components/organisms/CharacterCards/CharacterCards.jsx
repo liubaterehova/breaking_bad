@@ -9,47 +9,9 @@ export default class CharacterCards extends Component {
     status: "",
     category: ""
   };
-  componentDidMount() {
-    console.log("this.propsInCharacterCard", this.props.dataSource);
-    this.props.dataSource.getAllCharacters();
-  }
 
   render() {
-    const { dataSource } = this.props;
-    const { characterCards, filterState } = dataSource;
-    console.log("inPageCharacter", characterCards);
-    console.log("inPagefilterState", filterState);
-    let data = characterCards;
-    const filterStatus = cards => {
-      return cards.filter(card => {
-        return card.status === filterState.status;
-      });
-    };
-
-    const filterCategory = cards => {
-      return cards.filter(card => {
-        return card.category === filterState.category;
-      });
-    };
-
-    if (filterState.status === "" && filterState.category === "") {
-      data = characterCards;
-    } else if (filterState.status === "") {
-      data = filterCategory(characterCards);
-    } else if (filterState.category === "") {
-      data = filterStatus(characterCards);
-    } else {
-      let newArr = filterStatus(characterCards);
-      data = filterCategory(newArr);
-    }
-    // .filter(card =>
-    //   if (card.status === '') return card;
-    //   return card.status === filterState.status;
-    // })
-    // .filter(card => {
-    //   return card.category === filterState.category;
-    // });
-
+    const { data } = this.props;
     return (
       <List
         grid={{
