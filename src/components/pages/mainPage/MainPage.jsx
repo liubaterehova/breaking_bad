@@ -13,27 +13,35 @@ export default class MainPage extends Component {
     const { characterCards, filterState } = this.props;
     let data = characterCards;
 
-    const filterStatus = cards => {
+    const filterByTabName = (cards, nameTab) => {
+      console.log("nameTab", nameTab);
+      console.log("cards", cards);
       return cards.filter(card => {
-        return card.status === filterState.status;
+        return card[nameTab] === filterState[nameTab];
       });
     };
+    // const filterStatus = cards => {
+    //   return cards.filterByTabName(card => {
+    //     return card.status === filterState.status;
+    //   });
+    // };
 
-    const filterCategory = cards => {
-      return cards.filter(card => {
-        return card.category === filterState.category;
-      });
-    };
+    // const filterCategory = cards => {
+    //   return cards.filterByTabName(card => {
+    //     return card.category === filterState.category;
+    //   });
+    // };
 
     if (filterState.status === "" && filterState.category === "") {
       data = characterCards;
     } else if (filterState.status === "") {
-      data = filterCategory(characterCards);
+      data = filterByTabName(characterCards, "category");
+      debugger;
     } else if (filterState.category === "") {
-      data = filterStatus(characterCards);
+      data = filterByTabName(characterCards, "status");
     } else {
-      let newArr = filterStatus(characterCards);
-      data = filterCategory(newArr);
+      let newArr = filterByTabName(characterCards, "status");
+      data = filterByTabName(newArr, "category");
     }
 
     console.log("this.propsinMainPage", this.props);

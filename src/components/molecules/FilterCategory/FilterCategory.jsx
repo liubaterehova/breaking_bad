@@ -13,7 +13,6 @@ export default class FilterCategory extends Component {
     }
 
     const arrForCategory = Array.from(cards);
-    console.log("arrForCategory", arrForCategory);
     let keyfor = 0;
 
     const onClick = ({ key }) => {
