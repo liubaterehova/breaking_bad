@@ -9,7 +9,7 @@ export default class Filter extends Component {
     const { dataSource } = this.props;
     return (
       <div>
-        <FilterStatus characterCards={dataSource.characterCards} />
+        <FilterStatus dataSource={dataSource} />
         <FilterCategory />
         <FilterFromAge />
         <FilterToAge />
