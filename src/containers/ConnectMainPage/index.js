@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators({
             getAllCharacters: customActions.getAllCharacters,
             changeFilterStateStatus: customActions.changeFilterStateStatus,
-            changeFilterCategoryStatus: customActions.changeFilterCategoryStatus
+            changeFilterCategoryStatus: customActions.changeFilterCategoryStatus,
+            changeFromAge: customActions.changeFromAge,
         },
         dispatch
     );

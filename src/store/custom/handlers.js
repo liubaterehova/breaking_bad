@@ -21,7 +21,7 @@ export const processFailure = (state, { payload }) => state;
 export const getAllCharacters = (state, { payload }) => {
     return {
         ...state,
-        isLoadingGetCharacters: true
+        isLoadingGetCharacters: true,
     };
 };
 
@@ -35,7 +35,7 @@ export const getAllCharactersSuccess = (state, { payload }) => {
 };
 
 export const changeFilterStateStatus = (state, { payload }) => {
-    console.log('payloadInStatusHandlers', payload);
+
     if (payload.key === '10') {
         return {
             ...state,
@@ -53,9 +53,18 @@ export const changeFilterStateStatus = (state, { payload }) => {
         }
     };
 };
-
+export const changeFromAge = (state, { payload }) => {
+    console.log('agePayload', payload)
+    return {
+        ...state,
+        filterState: {
+            ...state.filterState,
+            ageFrom: payload,
+        }
+    }
+}
 export const changeFilterCategoryStatus = (state, { payload }) => {
-    console.log('payloadInCategory', payload)
+
     if (payload.key === '10') {
         return {
             ...state,
@@ -75,29 +84,6 @@ export const changeFilterCategoryStatus = (state, { payload }) => {
 };
 
 
-// function filteredByStatus(characterCards, status) {
-//     let cards = new Map();
-//     for (let card of characterCards) {
-//         if (!cards.has(card.status)) {
-//             cards.set(card.status, [card]);
-//         } else cards.get(card.status).push(card);
-//     }
-//     const arrForStatus = Array.from(cards);
-//     console.log("arrForStatus", arrForStatus);
-//     return {...state,
-//         characterCards: arrForStatus,
-//     };
-// }
-
-
-// export const getSelectedCharacters = (state, { payloud }) => {
-//     if (state.filterState.status) {
-//         filteredByStatus(state.characterCards, status)
-//     }
-//     return {...state,
-
-//     };
-// }
 
 
 export default initialState;
