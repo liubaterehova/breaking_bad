@@ -5,28 +5,40 @@ import "antd/dist/antd.css";
 export default class FilterFromAge extends Component {
   render() {
     const { dataSource } = this.props;
+    console.log("datasourceInFromAge", dataSource);
     const style = {
       display: "inline-block",
       width: 100,
       marginLeft: 10
     };
-    const onClick = value => {
-      console.log("age", value);
-      // dataSource.changeFromAge(value);
+
+    const onChange = value => {
+      dataSource.changeMinAge(value);
     };
+
+    const max = dataSource.filterState.maxAge
+      ? dataSource.filterState.maxAge
+      : 100;
+
     const menu = (
-      <Menu onClick={onClick}>
+      <Menu>
         <Menu.Item key="1">
-          <Slider style={style} defaultValue={30} />{" "}
+          <Slider
+            style={style}
+            defaultValue={0}
+            onAfterChange={onChange}
+            max={max}
+          />
         </Menu.Item>
       </Menu>
     );
+
     return (
       <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" href="#">
+        <span>
           AGE FROM
           <Icon type="down" />
-        </a>
+        </span>
       </Dropdown>
     );
   }

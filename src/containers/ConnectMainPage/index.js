@@ -18,7 +18,10 @@ const mapDispatchToProps = dispatch =>
             getAllCharacters: customActions.getAllCharacters,
             changeFilterStateStatus: customActions.changeFilterStateStatus,
             changeFilterCategoryStatus: customActions.changeFilterCategoryStatus,
-            changeFromAge: customActions.changeFromAge,
+            changeMinAge: customActions.changeMinAge,
+            changeMaxAge: customActions.changeMaxAge,
+            reset: customActions.reset,
+            sortByAlphabet: customActions.sortByAlphabet,
         },
         dispatch
     );

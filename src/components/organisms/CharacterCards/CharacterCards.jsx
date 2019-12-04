@@ -12,6 +12,7 @@ export default class CharacterCards extends Component {
 
   render() {
     const { data } = this.props;
+    console.log("dataInMainPage", data);
     return (
       <List
         grid={{
@@ -40,7 +41,7 @@ export default class CharacterCards extends Component {
             >
               <p>name: {item.name}</p>
               <p>nick: {item.nickname}</p>
-              <p>birthday: {item.birthday}</p>
+              <p>age: {item.age}</p>
               <p>status: {item.status}</p>
               <p>category: {item.category}</p>
             </Card>

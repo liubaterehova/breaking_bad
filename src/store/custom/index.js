@@ -8,7 +8,10 @@ export const actions = createActions({
     CHANGE_FILTER_STATE_STATUS: undefined,
     CHANGE_FILTER_CATEGORY_STATUS: undefined,
     PROCESS_FAILURE: undefined,
-    CHANGE_FROM_AGE: undefined,
+    CHANGE_MIN_AGE: undefined,
+    CHANGE_MAX_AGE: undefined,
+    RESET: undefined,
+    SORT_BY_ALPHABET: undefined,
 });
 
 const customReducer = handleActions(
@@ -18,7 +21,11 @@ const customReducer = handleActions(
         [actions.getAllCharactersSuccess, handlers.getAllCharactersSuccess],
         [actions.changeFilterStateStatus, handlers.changeFilterStateStatus],
         [actions.changeFilterCategoryStatus, handlers.changeFilterCategoryStatus],
-        [actions.changeFromAge, handlers.changeFromAge]
+        [actions.changeMinAge, handlers.changeMinAge],
+        [actions.changeMaxAge, handlers.changeMaxAge],
+        [actions.reset, handlers.reset],
+        [actions.sortByAlphabet, handlers.sortByAlphabet],
+
     ]),
     initialState
 );

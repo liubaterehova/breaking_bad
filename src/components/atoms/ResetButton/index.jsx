@@ -11,9 +11,13 @@ export default class ResetButton extends Component {
   };
 
   render() {
+    const reset = () => {
+      console.log("reset, datasorse", this.props);
+      this.props.dataSource.reset();
+    };
     const { size } = this.state;
     return (
-      <Button type="primary" size={size}>
+      <Button type="primary" size={size} onClick={reset}>
         Reset
       </Button>
     );
