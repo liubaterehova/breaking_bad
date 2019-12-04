@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Slider, Menu, Dropdown, Icon } from "antd";
+import { Slider, Menu, Dropdown, Icon, Button } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterFromAge extends Component {
@@ -45,11 +45,10 @@ export default class FilterFromAge extends Component {
       </Menu>
     );
     return (
-      <Dropdown overlay={menu}>
-        <span>
-          AGE TO
-          <Icon type="down" />
-        </span>
+      <Dropdown overlay={menu} trigger={["click"]}>
+        <Button>
+          AGE TO <Icon type="down" />
+        </Button>
       </Dropdown>
     );
   }

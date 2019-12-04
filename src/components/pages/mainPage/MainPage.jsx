@@ -49,13 +49,22 @@ export default class MainPage extends Component {
     data = filterByTabName(data, "category");
     data = filterByAge(data, filterState.minAge, "minAge");
     data = filterByAge(data, filterState.maxAge, "maxAge");
-    console.log("dataAfterAllFilters", data);
-    return (
+
+    const buttons = (
       <div>
         <Filter dataSource={this.props} />
         <SortButton dataSource={this.props} />
         <ResetButton dataSource={this.props} />
-        <CharacterCards data={data} />
+      </div>
+    );
+    return (
+      <div>
+        {buttons}
+        {isLoadingGetCharacters ? (
+          <Spin size="large" />
+        ) : (
+          <CharacterCards data={data} />
+        )}
       </div>
     );
   }

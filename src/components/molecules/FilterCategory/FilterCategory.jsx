@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Dropdown, Icon } from "antd";
+import { Menu, Dropdown, Icon, Button } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterCategory extends Component {
@@ -37,10 +37,10 @@ export default class FilterCategory extends Component {
     );
 
     return (
-      <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" href="#">
+      <Dropdown overlay={menu} trigger={["click"]}>
+        <Button>
           CATEGORY <Icon type="down" />
-        </a>
+        </Button>
       </Dropdown>
     );
   }
