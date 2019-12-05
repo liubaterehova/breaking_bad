@@ -9,10 +9,22 @@ export default class Filter extends Component {
     const { dataSource } = this.props;
     return (
       <div>
-        <FilterStatus dataSource={dataSource} />
-        <FilterCategory dataSource={dataSource} />
-        <FilterFromAge dataSource={dataSource} />
-        <FilterToAge dataSource={dataSource} />
+        <FilterStatus
+          dataSource={dataSource}
+          arrForStatus={this.props.arrForStatus}
+        />
+        <FilterCategory
+          dataSource={dataSource}
+          arrForCategory={this.props.arrForCategory}
+        />
+        <FilterFromAge
+          maxAge={dataSource.filterState.maxAge}
+          changeMinAge={dataSource.changeMinAge}
+        />
+        <FilterToAge
+          minAge={dataSource.filterState.minAge}
+          changeMaxAge={dataSource.changeMaxAge}
+        />
       </div>
     );
   }

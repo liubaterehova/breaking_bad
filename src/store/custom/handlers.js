@@ -65,6 +65,7 @@ export const reset = (state, { payload }) => {
 }
 
 const sortByAlphabetFunc = (sort, arr) => {
+    console.log('vokedSortByAlphabet');
     arr.sort((a, b) => {
         if (a.name < b.name) return -1 * sort;
         if (a.name > b.name) return 1 * sort;

@@ -4,21 +4,15 @@ import "antd/dist/antd.css";
 
 export default class FilterFromAge extends Component {
   render() {
-    const { dataSource } = this.props;
-    console.log("datasourceInFromAge", dataSource);
+    const { maxAge, changeMinAge } = this.props;
+
     const style = {
       display: "inline-block",
       width: 100,
       marginLeft: 10
     };
 
-    const onChange = value => {
-      dataSource.changeMinAge(value);
-    };
-
-    const max = dataSource.filterState.maxAge
-      ? dataSource.filterState.maxAge
-      : 100;
+    let max = maxAge ? maxAge : 100;
 
     const menu = (
       <Menu>
@@ -26,7 +20,7 @@ export default class FilterFromAge extends Component {
           <Slider
             style={style}
             defaultValue={0}
-            onAfterChange={onChange}
+            onAfterChange={changeMinAge}
             max={max}
           />
         </Menu.Item>

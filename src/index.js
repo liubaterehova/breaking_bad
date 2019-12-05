@@ -10,41 +10,19 @@ import configureStore from "./store";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import MainPage from "../src/containers/ConnectMainPage";
+import ConnectMainPage from "../src/containers/ConnectMainPage";
 import Template from "../src/components/template";
 
-// const state = {
-//   router: {},
-//   custom: {
-//     isLoading: false,
-//     error: null,
-//     countries: [],
-//     weathers: [],
-//     holidays: []
-//   }
-// };
-
 const configure = async () => {
-  const history = createBrowserHistory();
-  //const headersManager = makeHeadersManager({ authManager });
-
   const api = makeApi({ client: axios });
   const store = configureStore({ api, history });
-
-  // const JWTcreds = authManager.getCredentials();
-
-  // actions.getJwtDecoded({decodedJWT:JWTcreds})
-  // if (JWTcreds) {
-  //     localStorage.setItem('token', JWTcreds);
-  //     history.push('/dash');
-  // }
 
   const rootElement = document.getElementById("root");
 
   ReactDOM.render(
     <Provider store={store}>
       <Template history={history}>
-        <MainPage />
+        <ConnectMainPage />
       </Template>{" "}
     </Provider>,
 

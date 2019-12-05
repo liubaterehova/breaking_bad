@@ -4,14 +4,19 @@ import SortButton from "../../atoms/SortButton";
 import ResetButton from "../../atoms/ResetButton";
 import CharacterCards from "../../organisms/CharacterCards";
 import { Spin } from "antd";
-// import ConnectCharacterCards from "../../../containers/ConnectCharacterCards";
 
 export default class MainPage extends Component {
   componentDidMount() {
     this.props.getAllCharacters();
   }
   render() {
-    const { characterCards, filterState, isLoadingGetCharacters } = this.props;
+    const {
+      characterCards,
+      filterState,
+      isLoadingGetCharacters,
+      sortByAlphabet,
+      reset
+    } = this.props;
 
     let data = characterCards;
 
@@ -24,12 +29,11 @@ export default class MainPage extends Component {
 
     const filterByAge = (cards, number, lift) => {
       let newArr = [];
-      console.log("lift", lift);
 
       if (!filterState[lift]) {
-        console.log("no", lift);
         return cards;
       }
+
       if (lift === "minAge")
         newArr = cards.filter(card => {
           if (card.age === "Unknown") return true;
@@ -41,9 +45,20 @@ export default class MainPage extends Component {
           return card.age < number;
         });
       }
-      console.log("filteredByAge", newArr);
       return newArr;
     };
+
+    function filterByStatusorCategory(option) {
+      let cards = new Map();
+      for (let card of characterCards) {
+        if (!cards.has(card[option])) {
+          cards.set(card[option], [card]);
+        } else cards.get(card[option]).push(card);
+      }
+      const arr = Array.from(cards);
+
+      return arr;
+    }
 
     data = filterByTabName(characterCards, "status");
     data = filterByTabName(data, "category");
@@ -52,9 +67,13 @@ export default class MainPage extends Component {
 
     const buttons = (
       <div>
-        <Filter dataSource={this.props} />
-        <SortButton dataSource={this.props} />
-        <ResetButton dataSource={this.props} />
+        <Filter
+          dataSource={this.props}
+          arrForCategory={filterByStatusorCategory("category")}
+          arrForStatus={filterByStatusorCategory("status")}
+        />
+        <SortButton sortByAlphabet={sortByAlphabet} />
+        <ResetButton reset={reset} />
       </div>
     );
     return (

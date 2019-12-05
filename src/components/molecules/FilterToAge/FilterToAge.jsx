@@ -16,26 +16,22 @@ export default class FilterFromAge extends Component {
       width: 100,
       marginLeft: 10
     };
-    const { dataSource } = this.props;
+    const { minAge, changeMaxAge } = this.props;
     const { reverse } = this.state;
+
     const onChange = value => {
-      console.log("agethatWeClick", value);
-      if (value <= dataSource.filterState.minAge) {
+      if (value <= minAge) {
         return;
       }
-      dataSource.changeMaxAge(value);
+      changeMaxAge(value);
     };
-    const min = () => {
-      if (dataSource.filterState.minAge) {
-        return dataSource.filterState.minAge;
-      }
-      return 0;
-    };
+    const min = minAge ? minAge : 0;
+
     const menu = (
       <Menu>
         <Menu.Item key="1">
           <Slider
-            min={min()}
+            min={min}
             style={style}
             defaultValue={70}
             reverse={reverse}

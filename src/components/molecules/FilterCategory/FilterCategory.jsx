@@ -4,26 +4,17 @@ import "antd/dist/antd.css";
 
 export default class FilterCategory extends Component {
   render() {
-    const { characterCards } = this.props.dataSource;
-    let cards = new Map();
-    for (let card of characterCards) {
-      if (!cards.has(card.category)) {
-        cards.set(card.category, [card]);
-      } else cards.get(card.category).push(card);
-    }
-
-    const arrForCategory = Array.from(cards);
+    const { arrForCategory, dataSource } = this.props;
     let keyfor = 0;
 
     const onClick = ({ key }) => {
-      console.log("key", key);
       if (key === "10") {
-        return this.props.dataSource.changeFilterCategoryStatus({
+        return dataSource.changeFilterCategoryStatus({
           key: key,
           allCategories: ""
         });
       }
-      return this.props.dataSource.changeFilterCategoryStatus({
+      return dataSource.changeFilterCategoryStatus({
         key: arrForCategory[key][0]
       });
     };

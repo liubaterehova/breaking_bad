@@ -4,28 +4,19 @@ import "antd/dist/antd.css";
 
 export default class FilterStatus extends Component {
   render() {
-    const { characterCards } = this.props.dataSource;
+    const { dataSource, arrForStatus } = this.props;
 
-    let cards = new Map();
-
-    for (let card of characterCards) {
-      if (!cards.has(card.status)) {
-        cards.set(card.status, [card]);
-      } else cards.get(card.status).push(card);
-    }
-    const arrForStatus = Array.from(cards);
-    console.log("arrForStatus", arrForStatus);
     let keyfor = 0;
 
     const onClick = ({ key }) => {
       console.log("key", key);
       if (key === "10") {
-        return this.props.dataSource.changeFilterStateStatus({
+        return dataSource.changeFilterStateStatus({
           key: key,
           allCategories: ""
         });
       } else
-        return this.props.dataSource.changeFilterStateStatus({
+        return dataSource.changeFilterStateStatus({
           key: arrForStatus[key][0]
         });
     };
