@@ -24,13 +24,13 @@ function* getAllCharactersSaga({ payload }) {
             // payload - это value , которое мы ввели
             //response.data -это ответ от сервера
             const newArr = makeCharacterCard(response.data);
-            console.log('newArr', newArr)
+
             yield put(
                 actions.getAllCharactersSuccess({ characterCards: newArr })
             );
         }
     } catch (error) {
-        console.log("errorInSaga");
+
         yield put(actions.processFailure({ error }));
     }
 }

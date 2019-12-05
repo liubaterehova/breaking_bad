@@ -4,6 +4,7 @@ import SortButton from "../../atoms/SortButton";
 import ResetButton from "../../atoms/ResetButton";
 import CharacterCards from "../../organisms/CharacterCards";
 import { Spin } from "antd";
+import Template from "../../template";
 
 export default class MainPage extends Component {
   componentDidMount() {
@@ -77,14 +78,14 @@ export default class MainPage extends Component {
       </div>
     );
     return (
-      <div>
+      <Template>
         {buttons}
         {isLoadingGetCharacters ? (
           <Spin size="large" />
         ) : (
           <CharacterCards data={data} />
         )}
-      </div>
+      </Template>
     );
   }
 }

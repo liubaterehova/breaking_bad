@@ -12,7 +12,6 @@ export default class CharacterCards extends Component {
 
   render() {
     const { data } = this.props;
-    console.log("dataInMainPage", data);
     return (
       <List
         grid={{

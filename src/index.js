@@ -10,10 +10,11 @@ import configureStore from "./store";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 
-import ConnectMainPage from "../src/containers/ConnectMainPage";
-import Template from "../src/components/template";
+import MainPage from "../src/containers/ConnectMainPage";
 
 const configure = async () => {
+  const history = createBrowserHistory();
+
   const api = makeApi({ client: axios });
   const store = configureStore({ api, history });
 
@@ -21,9 +22,7 @@ const configure = async () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <Template history={history}>
-        <ConnectMainPage />
-      </Template>{" "}
+      <MainPage history={history}></MainPage>{" "}
     </Provider>,
 
     rootElement

@@ -40,7 +40,6 @@ export const getAllCharacters = (state, { payload }) => {
 };
 
 export const getAllCharactersSuccess = (state, { payload }) => {
-    console.log("payloadInGetCharactersSuccess", payload);
     return {
         ...state,
         isLoadingGetCharacters: false,
@@ -65,7 +64,6 @@ export const reset = (state, { payload }) => {
 }
 
 const sortByAlphabetFunc = (sort, arr) => {
-    console.log('vokedSortByAlphabet');
     arr.sort((a, b) => {
         if (a.name < b.name) return -1 * sort;
         if (a.name > b.name) return 1 * sort;
@@ -73,7 +71,7 @@ const sortByAlphabetFunc = (sort, arr) => {
     })
 
     const newArr = arr.slice();
-    console.log('arrAfterAlphabet', newArr)
+
     return newArr;
 }
 
@@ -114,7 +112,7 @@ export const changeFilterStateStatus = (state, { payload }) => {
     };
 };
 export const changeMinAge = (state, { payload }) => {
-    console.log('agePayloadMin', payload)
+
     return {
         ...state,
         filterState: {
@@ -125,7 +123,7 @@ export const changeMinAge = (state, { payload }) => {
 }
 
 export const changeMaxAge = (state, { payload }) => {
-    console.log('agePayloadMax', payload)
+
     return {
         ...state,
         filterState: {

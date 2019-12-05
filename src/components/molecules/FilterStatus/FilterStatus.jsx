@@ -3,22 +3,31 @@ import { Menu, Dropdown, Icon, Button } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterStatus extends Component {
+  state = {
+    selectedStatus: ""
+  };
+
   render() {
     const { dataSource, arrForStatus } = this.props;
 
     let keyfor = 0;
 
     const onClick = ({ key }) => {
-      console.log("key", key);
       if (key === "10") {
+        this.setState({
+          selectedStatus: "All"
+        });
         return dataSource.changeFilterStateStatus({
           key: key,
           allCategories: ""
         });
       } else
-        return dataSource.changeFilterStateStatus({
-          key: arrForStatus[key][0]
+        this.setState({
+          selectedStatus: arrForStatus[key][0]
         });
+      return dataSource.changeFilterStateStatus({
+        key: arrForStatus[key][0]
+      });
     };
 
     const menu = (
@@ -29,11 +38,14 @@ export default class FilterStatus extends Component {
         })}
       </Menu>
     );
+    const title = this.state.selectedStatus
+      ? this.state.selectedStatus
+      : "STATUS";
 
     return (
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button>
-          STATUS <Icon type="down" />
+          {title} <Icon type="down" />
         </Button>
       </Dropdown>
     );

@@ -3,6 +3,9 @@ import { Slider, Menu, Dropdown, Icon, Button } from "antd";
 import "antd/dist/antd.css";
 
 export default class FilterFromAge extends Component {
+  state = {
+    inputValue: ""
+  };
   render() {
     const { maxAge, changeMinAge } = this.props;
 
@@ -10,6 +13,12 @@ export default class FilterFromAge extends Component {
       display: "inline-block",
       width: 100,
       marginLeft: 10
+    };
+
+    const onChange = value => {
+      this.setState({
+        inputValue: value
+      });
     };
 
     let max = maxAge ? maxAge : 100;
@@ -20,6 +29,7 @@ export default class FilterFromAge extends Component {
           <Slider
             style={style}
             defaultValue={0}
+            onChange={onChange}
             onAfterChange={changeMinAge}
             max={max}
           />
@@ -30,7 +40,8 @@ export default class FilterFromAge extends Component {
     return (
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button>
-          AGE FROM <Icon type="down" />
+          AGE FROM {this.state.inputValue}
+          <Icon type="down" />
         </Button>
       </Dropdown>
     );

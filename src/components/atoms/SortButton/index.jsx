@@ -13,8 +13,7 @@ export default class SortButton extends Component {
   render() {
     const { size } = this.state;
     const { sortByAlphabet } = this.props;
-    console.log("this.propsInAtom", this.props);
-    console.log("sortByAlphabetInAtom", sortByAlphabet);
+
     return (
       <Button
         type="primary"

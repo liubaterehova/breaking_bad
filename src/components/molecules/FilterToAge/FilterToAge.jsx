@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 
 export default class FilterFromAge extends Component {
   state = {
+    inputValue: "",
     reverse: true
   };
 
@@ -20,10 +21,9 @@ export default class FilterFromAge extends Component {
     const { reverse } = this.state;
 
     const onChange = value => {
-      if (value <= minAge) {
-        return;
-      }
-      changeMaxAge(value);
+      this.setState({
+        inputValue: value
+      });
     };
     const min = minAge ? minAge : 0;
 
@@ -35,7 +35,8 @@ export default class FilterFromAge extends Component {
             style={style}
             defaultValue={70}
             reverse={reverse}
-            onAfterChange={onChange}
+            onAfterChange={changeMaxAge}
+            onChange={onChange}
           />{" "}
         </Menu.Item>
       </Menu>
@@ -43,7 +44,8 @@ export default class FilterFromAge extends Component {
     return (
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button>
-          AGE TO <Icon type="down" />
+          AGE TO {this.state.inputValue}
+          <Icon type="down" />
         </Button>
       </Dropdown>
     );
