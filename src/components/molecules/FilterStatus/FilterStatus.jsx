@@ -9,6 +9,8 @@ export default class FilterStatus extends Component {
 
   render() {
     const { dataSource, arrForStatus } = this.props;
+    const { filterState } = dataSource;
+    const { status } = filterState;
 
     let keyfor = 0;
 
@@ -38,9 +40,7 @@ export default class FilterStatus extends Component {
         })}
       </Menu>
     );
-    const title = this.state.selectedStatus
-      ? this.state.selectedStatus
-      : "STATUS";
+    const title = status ? status : "STATUS";
 
     return (
       <Dropdown overlay={menu} trigger={["click"]}>

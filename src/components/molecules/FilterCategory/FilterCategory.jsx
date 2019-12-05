@@ -8,6 +8,8 @@ export default class FilterCategory extends Component {
   };
   render() {
     const { arrForCategory, dataSource } = this.props;
+    const { filterState } = dataSource;
+    const { category } = filterState;
     let keyfor = 0;
 
     const onClick = ({ key }) => {
@@ -36,9 +38,7 @@ export default class FilterCategory extends Component {
         ))}
       </Menu>
     );
-    const title = this.state.selectedCategory
-      ? this.state.selectedCategory
-      : "CATEGORY";
+    const title = category ? category : "CATEGORY";
 
     return (
       <Dropdown overlay={menu} trigger={["click"]}>

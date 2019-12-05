@@ -20,10 +20,12 @@ export default class Filter extends Component {
         <FilterFromAge
           maxAge={dataSource.filterState.maxAge}
           changeMinAge={dataSource.changeMinAge}
+          minAge={dataSource.filterState.minAge}
         />
         <FilterToAge
           minAge={dataSource.filterState.minAge}
           changeMaxAge={dataSource.changeMaxAge}
+          maxAge={dataSource.filterState.maxAge}
         />
       </div>
     );

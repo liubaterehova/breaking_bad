@@ -7,7 +7,7 @@ export default class FilterFromAge extends Component {
     inputValue: ""
   };
   render() {
-    const { maxAge, changeMinAge } = this.props;
+    const { maxAge, changeMinAge, minAge } = this.props;
 
     const style = {
       display: "inline-block",
@@ -21,7 +21,7 @@ export default class FilterFromAge extends Component {
       });
     };
 
-    let max = maxAge ? maxAge : 100;
+    let max = maxAge ? maxAge : maxAge === 0 ? 0 : 100;
 
     const menu = (
       <Menu>
@@ -40,7 +40,7 @@ export default class FilterFromAge extends Component {
     return (
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button>
-          AGE FROM {this.state.inputValue}
+          AGE FROM {minAge}
           <Icon type="down" />
         </Button>
       </Dropdown>

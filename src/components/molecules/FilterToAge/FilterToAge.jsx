@@ -17,7 +17,7 @@ export default class FilterFromAge extends Component {
       width: 100,
       marginLeft: 10
     };
-    const { minAge, changeMaxAge } = this.props;
+    const { minAge, changeMaxAge, maxAge } = this.props;
     const { reverse } = this.state;
 
     const onChange = value => {
@@ -44,7 +44,7 @@ export default class FilterFromAge extends Component {
     return (
       <Dropdown overlay={menu} trigger={["click"]}>
         <Button>
-          AGE TO {this.state.inputValue}
+          AGE TO {maxAge}
           <Icon type="down" />
         </Button>
       </Dropdown>
