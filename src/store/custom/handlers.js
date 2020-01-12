@@ -21,6 +21,13 @@ const initialState = {
     sort: SORT_NO,
 };
 
+const initFilterState = {
+    status: "",
+    category: "",
+    minAge: 0,
+    maxAge: 100,
+};
+
 export const processFailure = (state, { payload }) => state;
 
 const makeAgeFromData = data => {
@@ -50,16 +57,13 @@ export const getAllCharactersSuccess = (state, { payload }) => {
         })
     };
 };
-export const reset = (state, { payload }) => {
+
+export const reset = (filterState, { payload }) => {
     return {
-        ...state,
-        filterState: {
-            status: "",
-            category: "",
-            minAge: 0,
-            maxAge: 100,
-        },
-        error: "",
+        status: "",
+        category: "",
+        minAge: 0,
+        maxAge: 100,
     }
 }
 

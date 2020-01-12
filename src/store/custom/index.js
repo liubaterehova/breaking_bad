@@ -30,4 +30,13 @@ const customReducer = handleActions(
     initialState
 );
 
+export const filterReducer = handleActions(
+    new Map([
+
+        [actions.reset, handlers.reset],
+
+    ]),
+    initialState
+);
+
 export default customReducer;
